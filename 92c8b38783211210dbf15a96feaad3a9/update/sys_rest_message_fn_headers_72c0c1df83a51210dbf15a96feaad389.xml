@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn_headers">
+    <sys_rest_message_fn_headers action="INSERT_OR_UPDATE">
+        <name>Authorization</name>
+        <rest_message_function display_value="GetResponse">52b0491b83a51210dbf15a96feaad381</rest_message_function>
+        <sys_class_name>sys_rest_message_fn_headers</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-11-03 21:27:11</sys_created_on>
+        <sys_id>72c0c1df83a51210dbf15a96feaad389</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Authorization</sys_name>
+        <sys_package display_value="AI App" source="x_244573_ai_app">92c8b38783211210dbf15a96feaad3a9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI App">92c8b38783211210dbf15a96feaad3a9</sys_scope>
+        <sys_update_name>sys_rest_message_fn_headers_72c0c1df83a51210dbf15a96feaad389</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-11-07 12:49:47</sys_updated_on>
+        <value>Bearer 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</value>
+    </sys_rest_message_fn_headers>
+</record_update>

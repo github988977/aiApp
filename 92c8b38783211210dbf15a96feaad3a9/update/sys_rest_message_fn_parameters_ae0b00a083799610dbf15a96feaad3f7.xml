@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn_parameters">
+    <sys_rest_message_fn_parameters action="INSERT_OR_UPDATE">
+        <name>model</name>
+        <rest_message_function display_value="GetResponse">52b0491b83a51210dbf15a96feaad381</rest_message_function>
+        <sys_class_name>sys_rest_message_fn_parameters</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-11-07 14:33:55</sys_created_on>
+        <sys_id>ae0b00a083799610dbf15a96feaad3f7</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>model</sys_name>
+        <sys_package display_value="AI App" source="x_244573_ai_app">92c8b38783211210dbf15a96feaad3a9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI App">92c8b38783211210dbf15a96feaad3a9</sys_scope>
+        <sys_update_name>sys_rest_message_fn_parameters_ae0b00a083799610dbf15a96feaad3f7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-11-07 15:02:47</sys_updated_on>
+        <type>string</type>
+        <value>gpt-4o-mini</value>
+    </sys_rest_message_fn_parameters>
+</record_update>

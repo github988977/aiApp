@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-11-03 21:56:56</sys_created_on>
+        <sys_id>cd1ac9db83e51210dbf15a96feaad3e9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_244573_ai_app_askanyquestion.x_244573_ai_app.askanyquestion_user</sys_name>
+        <sys_package display_value="AI App" source="x_244573_ai_app">92c8b38783211210dbf15a96feaad3a9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI App">92c8b38783211210dbf15a96feaad3a9</sys_scope>
+        <sys_security_acl display_value="x_244573_ai_app_askanyquestion">811ac9db83e51210dbf15a96feaad3e5</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_cd1ac9db83e51210dbf15a96feaad3e9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-11-03 21:56:56</sys_updated_on>
+        <sys_user_role display_value="x_244573_ai_app.askanyquestion_user" name="x_244573_ai_app.askanyquestion_user">491a059b83e51210dbf15a96feaad3d0</sys_user_role>
+    </sys_security_acl_role>
+</record_update>

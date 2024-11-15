@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="a40a89db83e51210dbf15a96feaad32b" label="AskAnyQuestion" max_length="40" name="x_244573_ai_app_askanyquestion" type="collection">
+        <element label="Answer" max_length="5000" name="answer" type="string"/>
+        <element label="Question" max_length="5000" name="question" type="string"/>
+    </element>
+</database>

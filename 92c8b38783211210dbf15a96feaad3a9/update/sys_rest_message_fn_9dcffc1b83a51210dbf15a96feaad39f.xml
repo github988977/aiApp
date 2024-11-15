@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn">
+    <sys_rest_message_fn action="INSERT_OR_UPDATE">
+        <authentication_type>inherit_from_parent</authentication_type>
+        <basic_auth_password/>
+        <basic_auth_profile/>
+        <basic_auth_user/>
+        <content/>
+        <function_name>Default GET</function_name>
+        <http_method>get</http_method>
+        <lock>false</lock>
+        <oauth2_profile/>
+        <protocol_name/>
+        <qualified_name>ChatGPT [ Default GET ]</qualified_name>
+        <rest_endpoint>https://api.openai.com/v1/completions</rest_endpoint>
+        <rest_message display_value="ChatGPT">7b9ff85f83a51210dbf15a96feaad338</rest_message>
+        <sys_class_name>sys_rest_message_fn</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-11-03 21:11:54</sys_created_on>
+        <sys_id>9dcffc1b83a51210dbf15a96feaad39f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Default GET</sys_name>
+        <sys_package display_value="AI App" source="x_244573_ai_app">92c8b38783211210dbf15a96feaad3a9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI App">92c8b38783211210dbf15a96feaad3a9</sys_scope>
+        <sys_update_name>sys_rest_message_fn_9dcffc1b83a51210dbf15a96feaad39f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-11-03 21:11:54</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <use_mid_server/>
+        <use_mutual_auth>false</use_mutual_auth>
+    </sys_rest_message_fn>
+</record_update>

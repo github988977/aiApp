@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_topic">
+    <sys_cb_topic action="INSERT_OR_UPDATE">
+        <applicability/>
+        <applicability_mode>query</applicability_mode>
+        <autopilot_topic>false</autopilot_topic>
+        <category/>
+        <channels/>
+        <connect_queue/>
+        <context_profiles/>
+        <description/>
+        <dialog_acts_enabled>false</dialog_acts_enabled>
+        <expose_on_palette>false</expose_on_palette>
+        <flexible_conversation_switching>false</flexible_conversation_switching>
+        <foundational>false</foundational>
+        <graph>{
+  "graph_api_version": "1.0.68",
+  "goals": {
+    "primary": {
+      "id": "primary",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "32c3bb37ccd647e1b0f29049622aff6b": {
+          "id": "32c3bb37ccd647e1b0f29049622aff6b",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "945fe2a83154443bb5b685bcd4aa9e0e": {
+          "id": "945fe2a83154443bb5b685bcd4aa9e0e",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "c76c33de61074ef4b37a7b2c71b627a5": {
+          "id": "c76c33de61074ef4b37a7b2c71b627a5",
+          "stepType": "TextPrompt",
+          "name": "Questions",
+          "prompt": {
+            "value": "(function execute() {\n if((vaVars.gptAnswers == '...' || vaVars.gptAnswers == '' )){\n     return \"Hello \"+ vaInputs.user.name +\"!!!!! wanna ask something?\";\n     \n } \n else{ return vaVars.gptAnswers;   }\n    return '';\n})()\n",
+            "mode": "script"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "skipReprompt": {
+            "value": "vaInputs.sure=true",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "variableId": "e07cc117804d417398731039f7d8a979",
+          "detailDescription": "",
+          "inputType": {
+            "format": "Text",
+            "script": ""
+          },
+          "requestFeedback": true
+        },
+        "0fe080b54d82431f84cf44dff61760d0": {
+          "id": "0fe080b54d82431f84cf44dff61760d0",
+          "stepType": "Decision",
+          "name": "Decision"
+        },
+        "46bc63c9c1644e09a2ad8c4c1c053408": {
+          "id": "46bc63c9c1644e09a2ad8c4c1c053408",
+          "name": "REST",
+          "script": " var r1 = new sn_ws.RESTMessageV2('x_244573_ai_app.ChatGPT', 'GetResponse');\n r1.setStringParameterNoEscape('temp', 0.5);\n r1.setStringParameterNoEscape('model', 'gpt-4o-mini');\n r1.setStringParameterNoEscape('max_token', 1024);\n //r1.setStringParameterNoEscape('messages', '[{\"role\":\"user\",\"content\": \"test\"]');\n r1.setStringParameterNoEscape('messages', `[{\"role\":\"user\",\"content\":\"${vaInputs.questions}\"}]`);\n\n\n\n\n var response1 = r1.execute();\n var responseBody = response1.getBody();\n var httpStatus = response1.getStatusCode();\n //gs.info(\"s.h.admin &gt;&gt; httpStauts\" + httpStatus);\n //gs.info(\"s.h.admin &gt;&gt; responseBody\" + responseBody);\n\n\n\n\nif(httpStatus =='200'){\n    var data =JSON.parse(responseBody);\n    vaVars.gptAnswers=data.choices[0].message.content;\n    //vaVars.gptAnswers=data;\n}\n\n",
+          "stepType": "ScriptAction",
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "d81928f81345454a87010c4b42a728a1": {
+          "name": "Whats your demand ?",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": ""
+                  },
+                  {
+                    "type": "datapill",
+                    "dataPill": {
+                      "value": "{{vaInputs.questions}}",
+                      "displayValue": "Input Variables➛Questions"
+                    },
+                    "children": [
+                      {
+                        "text": ""
+                      }
+                    ]
+                  },
+                  {
+                    "text": ""
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "skipReprompt": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "variableId": "c0845e446c1d4cb7b2e641b9346fd168",
+          "detailDescription": "",
+          "id": "d81928f81345454a87010c4b42a728a1",
+          "stepType": "ChoicePrompt",
+          "hasCardHeader": true,
+          "cardMetadata": {
+            "mode": "card",
+            "metadataScript": "",
+            "cardTemplate": "Small image with text",
+            "cardFields": {
+              "1cf75c317313101081e06502edf6a738_title": {
+                "value": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "text": "Auswahl 1 "
+                      }
+                    ]
+                  }
+                ],
+                "mode": "simple"
+              },
+              "1cf75c317313101081e06502edf6a738_description": {
+                "value": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "text": "Was ist die Frage"
+                      }
+                    ]
+                  }
+                ],
+                "mode": "simple"
+              },
+              "1cf75c317313101081e06502edf6a738_image": {
+                "value": "Virtual_Background_2_1731414388936.jpg",
+                "mode": "db_image"
+              }
+            },
+            "cardDefinition": {
+              "sys_id": "1cf75c317313101081e06502edf6a738",
+              "name": "Small image with text",
+              "sys_name": "Small image with text",
+              "thumbnail.name": "Small image with text.svg",
+              "fields": [
+                {
+                  "label": "Title",
+                  "position": "1",
+                  "mandatory": true,
+                  "name": "title",
+                  "id": "1cf75c317313101081e06502edf6a738_title"
+                },
+                {
+                  "label": "Description",
+                  "position": "2",
+                  "mandatory": false,
+                  "name": "description",
+                  "id": "1cf75c317313101081e06502edf6a738_description"
+                },
+                {
+                  "label": "Image URL link",
+                  "position": "3",
+                  "mandatory": true,
+                  "type": "image",
+                  "name": "image",
+                  "id": "1cf75c317313101081e06502edf6a738_image"
+                },
+                {
+                  "label": "Image alt text",
+                  "position": "4",
+                  "mandatory": false,
+                  "name": "imageAlt",
+                  "id": "1cf75c317313101081e06502edf6a738_imageAlt"
+                }
+              ],
+              "value": "Small image with text",
+              "hasTemplateError": false
+            }
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false
+        },
+        "730e765999f44ab4a029e7d9835fac13": {
+          "id": "730e765999f44ab4a029e7d9835fac13",
+          "stepType": "BooleanPrompt",
+          "name": "sure",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Are you sure"
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "skipReprompt": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "variableId": "6a2f0eef072e4f5ca252fd0ba08ff47f",
+          "detailDescription": ""
+        }
+      },
+      "edges": [
+        {
+          "id": "1331d7535b214aadbf78dc3eebb176fc",
+          "edgeType": "Edge",
+          "source": "730e765999f44ab4a029e7d9835fac13",
+          "target": "c76c33de61074ef4b37a7b2c71b627a5",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "057a2990276347b4b8ccf2e389fc9cac",
+          "edgeType": "Edge",
+          "source": "32c3bb37ccd647e1b0f29049622aff6b",
+          "target": "d81928f81345454a87010c4b42a728a1",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "42d04954f9aa48de8370a65677d091f9",
+          "edgeType": "Edge",
+          "source": "c76c33de61074ef4b37a7b2c71b627a5",
+          "target": "0fe080b54d82431f84cf44dff61760d0",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "92ff1f4ba8bb4c2da50234f092d69cda",
+          "edgeType": "Branch",
+          "source": "0fe080b54d82431f84cf44dff61760d0",
+          "target": "945fe2a83154443bb5b685bcd4aa9e0e",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.questions=Bye^NQvaInputs.questions=bye",
+            "mode": "query"
+          },
+          "label": "BYE"
+        },
+        {
+          "id": "5b6dcba755534d53812a91f8d0f46fcd",
+          "edgeType": "Branch",
+          "source": "0fe080b54d82431f84cf44dff61760d0",
+          "target": "46bc63c9c1644e09a2ad8c4c1c053408",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.questionsANYTHING",
+            "mode": "query"
+          },
+          "label": "Always"
+        },
+        {
+          "id": "aaf2d9eb9966434a84607496e7986ce9",
+          "edgeType": "Edge",
+          "source": "46bc63c9c1644e09a2ad8c4c1c053408",
+          "target": "d81928f81345454a87010c4b42a728a1",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "bcbabe7a10ca439d9d5aa94cdd12609c",
+          "edgeType": "Edge",
+          "source": "d81928f81345454a87010c4b42a728a1",
+          "target": "730e765999f44ab4a029e7d9835fac13",
+          "sourcePort": "",
+          "targetPort": ""
+        }
+      ]
+    }
+  },
+  "variables": {
+    "current-user": {
+      "category": "vaInputs",
+      "id": "current-user",
+      "label": "User",
+      "name": "user",
+      "table": "sys_user",
+      "varType": "reference"
+    },
+    "4c3484e5c04b4e00992a7020247d7e9f": {
+      "id": "4c3484e5c04b4e00992a7020247d7e9f",
+      "value": {
+        "mode": "simple",
+        "value": "..."
+      },
+      "name": "gptAnswers",
+      "label": "gptAnswers",
+      "varType": "script",
+      "category": "vaVars"
+    },
+    "e07cc117804d417398731039f7d8a979": {
+      "id": "e07cc117804d417398731039f7d8a979",
+      "name": "questions",
+      "label": "Questions",
+      "varType": "string",
+      "secure": false,
+      "category": "vaInputs",
+      "encryptionHashFunction": "SHA-256",
+      "encryptionSalt": {
+        "value": "MTczMTAxMDkwOTc0MSBWQSBEZXNpZ25lciBpcyBhd2Vzb21l",
+        "mode": "simple"
+      },
+      "nodeId": "c76c33de61074ef4b37a7b2c71b627a5",
+      "isHidden": false
+    },
+    "c0845e446c1d4cb7b2e641b9346fd168": {
+      "id": "c0845e446c1d4cb7b2e641b9346fd168",
+      "name": "whats_your_demand_",
+      "label": "Whats Your Demand ?",
+      "varType": "choice",
+      "choices": [
+        {
+          "label": "Frage stellen",
+          "value": "Frage stellen"
+        },
+        {
+          "label": "Nachricht senden",
+          "value": "Nachricht senden"
+        }
+      ],
+      "category": "vaInputs",
+      "nodeId": "d81928f81345454a87010c4b42a728a1",
+      "isHidden": false
+    },
+    "6a2f0eef072e4f5ca252fd0ba08ff47f": {
+      "id": "6a2f0eef072e4f5ca252fd0ba08ff47f",
+      "name": "sure",
+      "label": "Sure",
+      "varType": "boolean",
+      "secure": false,
+      "category": "vaInputs",
+      "nodeId": "730e765999f44ab4a029e7d9835fac13",
+      "isHidden": false
+    }
+  }
+}</graph>
+        <key_phrases>Chat Gpt Agent</key_phrases>
+        <library>false</library>
+        <live_agent>false</live_agent>
+        <model_type>nlu_keyword</model_type>
+        <modify_confirmation_enabled>false</modify_confirmation_enabled>
+        <name>Chat Gpt Agent</name>
+        <nlu_intent/>
+        <nlu_intent_label/>
+        <nlu_model/>
+        <nlu_model_label/>
+        <nlu_provider/>
+        <palette_label/>
+        <roles/>
+        <root_topic_id/>
+        <secure_custom_input_control>false</secure_custom_input_control>
+        <source_topic_id/>
+        <sys_class_name>sys_cb_topic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-11-07 20:19:27</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>4c2a55248331d610dbf15a96feaad37d</sys_id>
+        <sys_mod_count>36</sys_mod_count>
+        <sys_name>Chat Gpt Agent</sys_name>
+        <sys_package display_value="AI App" source="x_244573_ai_app">92c8b38783211210dbf15a96feaad3a9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI App">92c8b38783211210dbf15a96feaad3a9</sys_scope>
+        <sys_update_name>sys_cb_topic_4c2a55248331d610dbf15a96feaad37d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-11-12 12:40:05</sys_updated_on>
+        <title>Chat Gpt Agent</title>
+        <triggerable_by_notification>false</triggerable_by_notification>
+        <type>STANDARD</type>
+    </sys_cb_topic>
+    <sys_translated_text action="delete_multiple" query="documentkey=4c2a55248331d610dbf15a96feaad37d"/>
+</record_update>

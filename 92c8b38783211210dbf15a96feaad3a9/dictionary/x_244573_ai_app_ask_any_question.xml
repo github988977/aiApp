@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="7757c92083bd9610dbf15a96feaad3a8" label="Ask Any Question" max_length="40" name="x_244573_ai_app_ask_any_question" type="collection">
+        <element label="Your Answer" max_length="5000" name="your_answer" type="string_full_utf8"/>
+        <element label="Your Question" max_length="5000" name="your_question" type="string_full_utf8"/>
+    </element>
+</database>

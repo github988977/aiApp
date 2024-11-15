@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn_parameters">
+    <sys_rest_message_fn_parameters action="DELETE">
+        <name>max_tokens</name>
+        <rest_message_function display_value="GetResponse">52b0491b83a51210dbf15a96feaad381</rest_message_function>
+        <sys_class_name>sys_rest_message_fn_parameters</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-11-03 21:41:58</sys_created_on>
+        <sys_id>54a6c1d783e51210dbf15a96feaad3c6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>max_tokens</sys_name>
+        <sys_package display_value="AI App" source="x_244573_ai_app">92c8b38783211210dbf15a96feaad3a9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI App">92c8b38783211210dbf15a96feaad3a9</sys_scope>
+        <sys_update_name>sys_rest_message_fn_parameters_54a6c1d783e51210dbf15a96feaad3c6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-11-03 21:41:58</sys_updated_on>
+        <type>string</type>
+        <value>1024</value>
+    </sys_rest_message_fn_parameters>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="AI App">92c8b38783211210dbf15a96feaad3a9</application>
+        <file_path/>
+        <instance_id>ccda5aef1bde39909377eb9b2d4bcb60</instance_id>
+        <instance_name>dev210910</instance_name>
+        <name>sys_rest_message_fn_parameters_54a6c1d783e51210dbf15a96feaad3c6</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn_parameters"><sys_rest_message_fn_parameters action="INSERT_OR_UPDATE"><name>max_tokens</name><rest_message_function display_value="GetResponse">52b0491b83a51210dbf15a96feaad381</rest_message_function><sys_class_name>sys_rest_message_fn_parameters</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2024-11-03 21:41:58</sys_created_on><sys_id>54a6c1d783e51210dbf15a96feaad3c6</sys_id><sys_mod_count>0</sys_mod_count><sys_name>max_tokens</sys_name><sys_package display_value="AI App" source="x_244573_ai_app">92c8b38783211210dbf15a96feaad3a9</sys_package><sys_policy/><sys_scope display_value="AI App">92c8b38783211210dbf15a96feaad3a9</sys_scope><sys_update_name>sys_rest_message_fn_parameters_54a6c1d783e51210dbf15a96feaad3c6</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2024-11-03 21:41:58</sys_updated_on><type>string</type><value>1024</value></sys_rest_message_fn_parameters></record_update>]]></payload>
+        <payload_hash>-1966329411</payload_hash>
+        <record_name>max_tokens</record_name>
+        <reverted_from/>
+        <source>9ac8b38783211210dbf15a96feaad3df</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-11-03 21:41:58</sys_created_on>
+        <sys_id>3da641d783e51210dbf15a96feaad389</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>192f3fa47390000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-11-03 21:41:58</sys_updated_on>
+        <type>Variable Substitutions</type>
+        <update_guid>31a641d769e5121081e1c762681c8389</update_guid>
+        <update_guid_history>31a641d769e5121081e1c762681c8389:-1966329411</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-11-07 14:29:21</sys_created_on>
+        <sys_db_object display_value="" name="sys_rest_message_fn_parameters">sys_rest_message_fn_parameters</sys_db_object>
+        <sys_id>05df6cb0a8fc487e82b24e8e01aca684</sys_id>
+        <sys_metadata>54a6c1d783e51210dbf15a96feaad3c6</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>max_tokens</sys_name>
+        <sys_package display_value="AI App" source="x_244573_ai_app">92c8b38783211210dbf15a96feaad3a9</sys_package>
+        <sys_parent display_value="GetResponse">52b0491b83a51210dbf15a96feaad381</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="AI App">92c8b38783211210dbf15a96feaad3a9</sys_scope>
+        <sys_scope_delete display_value="">807c3f5bbf3f450486e1f7a273201639</sys_scope_delete>
+        <sys_update_name>sys_rest_message_fn_parameters_54a6c1d783e51210dbf15a96feaad3c6</sys_update_name>
+        <sys_update_version display_value="sys_rest_message_fn_parameters_54a6c1d783e51210dbf15a96feaad3c6">3da641d783e51210dbf15a96feaad389</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-11-07 14:29:21</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

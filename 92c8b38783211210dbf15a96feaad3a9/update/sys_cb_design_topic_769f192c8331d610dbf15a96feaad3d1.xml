@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_design_topic">
+    <sys_cb_design_topic action="INSERT_OR_UPDATE">
+        <compiled_topic display_value="Chat Gpt Agent">fa9f192c8331d610dbf15a96feaad3cd</compiled_topic>
+        <design_definition>{"type":"FlowTopic","triggers":[{"type":"Trigger","name":"525a25056dcf4c71a4397a0aff48bb55","triggerType":"request","applicability":{"type":"Applicability","mode":"script","value":"true"},"id":"525a25056dcf4c71a4397a0aff48bb55"}],"goals":[{"name":"primary","trigger_id":"525a25056dcf4c71a4397a0aff48bb55","nodes":[{"type":"StartGoal","goal_id":"primary","greeting_msg":{"type":"String","mode":"string","value":""},"id":"32c3bb37ccd647e1b0f29049622aff6b","name":"Start","expert_mode":false},{"type":"TerminateGoal","goal_id":"primary","confirmation_msg":{"type":"String","mode":"string","value":""},"id":"945fe2a83154443bb5b685bcd4aa9e0e","name":"End","expert_mode":false},{"type":"InputPrompt","variable_id":"e07cc117804d417398731039f7d8a979","message":{"type":"String","mode":"script","value":"(function execute() {\n if((vaVars.gptAnswers == '...' || vaVars.gptAnswers == '' )){\n     return \"Hello \"+ vaInputs.user.name +\"!!!!! wanna ask something?\";\n     \n } \n else{ return vaVars.gptAnswers;   }\n    return '';\n})()\n"},"nlu_entity_binding":{"type":"NLUEntityBinding","allow_text_input":false,"use_confirmation_prompt":true},"request_feedback":true,"skippable":{"type":"Applicability","mode":"script","value":"false"},"skipreprompt":{"type":"Applicability","mode":"query","value":"sure=true"},"id":"c76c33de61074ef4b37a7b2c71b627a5","name":"Questions","goal_id":"primary","applicability":{"type":"Applicability","mode":"script","value":"true"},"expert_mode":false,"formatType":"Text","validationScript":"","description":""},{"type":"Decision","name":"Decision","branches":[{"type":"Branch","label":"BYE","expression":{"type":"Applicability","mode":"query","value":"questions=Bye^NQvaInputs.questions=bye"},"id":"88aec3d2ec2148948f23c27dce1595c6","name":"BYE","expert_mode":false},{"type":"Branch","label":"Always","expression":{"type":"Applicability","mode":"query","value":"questionsANYTHING"},"id":"23b1d03a8a7f419eabc2422b4b337fcd","name":"Always","expert_mode":false}],"id":"0fe080b54d82431f84cf44dff61760d0","goal_id":"primary","expert_mode":false},{"type":"ScriptedAction","script":" var r1 = new sn_ws.RESTMessageV2('x_244573_ai_app.ChatGPT', 'GetResponse');\n r1.setStringParameterNoEscape('temp', 0.5);\n r1.setStringParameterNoEscape('model', 'gpt-4o-mini');\n r1.setStringParameterNoEscape('max_token', 1024);\n //r1.setStringParameterNoEscape('messages', '[{\"role\":\"user\",\"content\": \"test\"]');\n r1.setStringParameterNoEscape('messages', `[{\"role\":\"user\",\"content\":\"${vaInputs.questions}\"}]`);\n\n\n\n\n var response1 = r1.execute();\n var responseBody = response1.getBody();\n var httpStatus = response1.getStatusCode();\n //gs.info(\"s.h.admin &gt;&gt; httpStauts\" + httpStatus);\n //gs.info(\"s.h.admin &gt;&gt; responseBody\" + responseBody);\n\n\n\n\nif(httpStatus =='200'){\n    var data =JSON.parse(responseBody);\n    vaVars.gptAnswers=data.choices[0].message.content;\n    //vaVars.gptAnswers=data;\n}\n\n","id":"46bc63c9c1644e09a2ad8c4c1c053408","name":"REST","goal_id":"primary","applicability":{"type":"Applicability","mode":"script","value":"true"},"expert_mode":false},{"type":"ChoiceInputPrompt","expression_mode":"simple","metadataScript":"","cardName":"Small image with text","cardFields":[{"name":"title","value":{"type":"String","mode":"string","value":"gs.getMessageLang(\"Auswahl 1\", vaContext.getRequesterLang())"},"required":true},{"name":"description","value":{"type":"String","mode":"string","value":"gs.getMessageLang(\"Was ist die Frage\", vaContext.getRequesterLang())"},"required":false},{"name":"image","value":{"type":"String","mode":"script","value":"(function execute() { var url = gs.getProperty(\"glide.servlet.uri\"); return url + \"Virtual_Background_2_1731414388936.jpg\";})()"},"required":true},{"name":"imageAlt","value":{"type":"String","mode":"string","value":""},"required":false}],"id":"d81928f81345454a87010c4b42a728a1","name":"Whats your demand ?","goal_id":"primary","applicability":{"type":"Applicability","mode":"script","value":"true"},"expert_mode":false,"variable_id":"c0845e446c1d4cb7b2e641b9346fd168","message":{"type":"String","mode":"string","value":"{{vaInputs.questions}}"},"request_feedback":false,"skippable":{"type":"Applicability","mode":"script","value":"false"},"skipreprompt":{"type":"Applicability","mode":"script","value":"false"},"nlu_entity_binding":{"type":"NLUEntityBinding","allow_text_input":false,"use_confirmation_prompt":true},"description":""},{"type":"InputPrompt","variable_id":"6a2f0eef072e4f5ca252fd0ba08ff47f","message":{"type":"String","mode":"string","value":"gs.getMessageLang(\"Are you sure\", vaContext.getRequesterLang())"},"nlu_entity_binding":{"type":"NLUEntityBinding","allow_text_input":false,"use_confirmation_prompt":true},"request_feedback":false,"skippable":{"type":"Applicability","mode":"script","value":"false"},"skipreprompt":{"type":"Applicability","mode":"script","value":"false"},"id":"730e765999f44ab4a029e7d9835fac13","name":"sure","goal_id":"primary","applicability":{"type":"Applicability","mode":"script","value":"true"},"expert_mode":false,"description":""}],"edges":[{"type":"Edge","source_node_id":"730e765999f44ab4a029e7d9835fac13","target_node_id":"c76c33de61074ef4b37a7b2c71b627a5","id":"1331d7535b214aadbf78dc3eebb176fc"},{"type":"Edge","source_node_id":"32c3bb37ccd647e1b0f29049622aff6b","target_node_id":"d81928f81345454a87010c4b42a728a1","id":"057a2990276347b4b8ccf2e389fc9cac"},{"type":"Edge","source_node_id":"c76c33de61074ef4b37a7b2c71b627a5","target_node_id":"0fe080b54d82431f84cf44dff61760d0","id":"42d04954f9aa48de8370a65677d091f9"},{"type":"Edge","source_node_id":"0fe080b54d82431f84cf44dff61760d0","target_node_id":"945fe2a83154443bb5b685bcd4aa9e0e","branch_id":"88aec3d2ec2148948f23c27dce1595c6","id":"92ff1f4ba8bb4c2da50234f092d69cda","name":"88aec3d2ec2148948f23c27dce1595c6"},{"type":"Edge","source_node_id":"0fe080b54d82431f84cf44dff61760d0","target_node_id":"46bc63c9c1644e09a2ad8c4c1c053408","branch_id":"23b1d03a8a7f419eabc2422b4b337fcd","id":"5b6dcba755534d53812a91f8d0f46fcd","name":"23b1d03a8a7f419eabc2422b4b337fcd"},{"type":"Edge","source_node_id":"46bc63c9c1644e09a2ad8c4c1c053408","target_node_id":"d81928f81345454a87010c4b42a728a1","id":"aaf2d9eb9966434a84607496e7986ce9"},{"type":"Edge","source_node_id":"d81928f81345454a87010c4b42a728a1","target_node_id":"730e765999f44ab4a029e7d9835fac13","id":"bcbabe7a10ca439d9d5aa94cdd12609c"}],"id":"primary"}],"script_variables":[{"type":"String","name":"gptAnswers","value":{"type":"String","mode":"string","value":"..."},"list":false,"id":"4c3484e5c04b4e00992a7020247d7e9f","formatType":"text","secure":false,"sensitive":false,"aiInput":false}],"glide_variables":[{"type":"Reference","table":"sys_user","id":"current-user","name":"user","formatType":"text","secure":false,"sensitive":false,"aiInput":false,"list":false},{"type":"String","name":"questions","list":false,"id":"e07cc117804d417398731039f7d8a979","formatType":"Text","validationScript":"","secure":false,"sensitive":false,"aiInput":false},{"type":"Choice","choices":[{"name":"Frage stellen","element":"Frage stellen"},{"name":"Nachricht senden","element":"Nachricht senden"}],"id":"c0845e446c1d4cb7b2e641b9346fd168","name":"whats_your_demand_","formatType":"text","secure":false,"sensitive":false,"aiInput":false,"list":false,"label":"Whats Your Demand ?"},{"type":"True/False","id":"6a2f0eef072e4f5ca252fd0ba08ff47f","name":"sure","formatType":"text","secure":false,"sensitive":false,"aiInput":false,"list":false}],"applicability":{"type":"Applicability","mode":"script","value":"true"},"roles":[],"scope":"92c8b38783211210dbf15a96feaad3a9","domain":"global","topic_type":"STANDARD","channels":[],"dialog_acts_enabled":false,"id":"4c2a55248331d610dbf15a96feaad37d","name":"Chat Gpt Agent","key_phrases":["Chat Gpt Agent"],"nlu_provider":"","nlu_model":"","nlu_model_label":"","nlu_intent":"","nlu_intent_label":"","flexible_conversation_switching":false,"autopilot_topic":false,"design_categories":[],"triggerable_by_notification":false,"model_type":"nlu_keyword","foundational":false,"modify_confirmation_enabled":false,"context_profiles":[],"title":"Chat Gpt Agent","library":false,"csTopicId":"fa9f192c8331d610dbf15a96feaad3cd","readOnly":false,"nluMapping":"[]"}</design_definition>
+        <design_topic_id>4c2a55248331d610dbf15a96feaad37d</design_topic_id>
+        <graph>{
+  "graph_api_version": "1.0.68",
+  "goals": {
+    "primary": {
+      "id": "primary",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "32c3bb37ccd647e1b0f29049622aff6b": {
+          "id": "32c3bb37ccd647e1b0f29049622aff6b",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "945fe2a83154443bb5b685bcd4aa9e0e": {
+          "id": "945fe2a83154443bb5b685bcd4aa9e0e",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "c76c33de61074ef4b37a7b2c71b627a5": {
+          "id": "c76c33de61074ef4b37a7b2c71b627a5",
+          "stepType": "TextPrompt",
+          "name": "Questions",
+          "prompt": {
+            "value": "(function execute() {\n if((vaVars.gptAnswers == '...' || vaVars.gptAnswers == '' )){\n     return \"Hello \"+ vaInputs.user.name +\"!!!!! wanna ask something?\";\n     \n } \n else{ return vaVars.gptAnswers;   }\n    return '';\n})()\n",
+            "mode": "script"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "skipReprompt": {
+            "value": "vaInputs.sure=true",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "variableId": "e07cc117804d417398731039f7d8a979",
+          "detailDescription": "",
+          "inputType": {
+            "format": "Text",
+            "script": ""
+          },
+          "requestFeedback": true
+        },
+        "0fe080b54d82431f84cf44dff61760d0": {
+          "id": "0fe080b54d82431f84cf44dff61760d0",
+          "stepType": "Decision",
+          "name": "Decision"
+        },
+        "46bc63c9c1644e09a2ad8c4c1c053408": {
+          "id": "46bc63c9c1644e09a2ad8c4c1c053408",
+          "name": "REST",
+          "script": " var r1 = new sn_ws.RESTMessageV2('x_244573_ai_app.ChatGPT', 'GetResponse');\n r1.setStringParameterNoEscape('temp', 0.5);\n r1.setStringParameterNoEscape('model', 'gpt-4o-mini');\n r1.setStringParameterNoEscape('max_token', 1024);\n //r1.setStringParameterNoEscape('messages', '[{\"role\":\"user\",\"content\": \"test\"]');\n r1.setStringParameterNoEscape('messages', `[{\"role\":\"user\",\"content\":\"${vaInputs.questions}\"}]`);\n\n\n\n\n var response1 = r1.execute();\n var responseBody = response1.getBody();\n var httpStatus = response1.getStatusCode();\n //gs.info(\"s.h.admin &gt;&gt; httpStauts\" + httpStatus);\n //gs.info(\"s.h.admin &gt;&gt; responseBody\" + responseBody);\n\n\n\n\nif(httpStatus =='200'){\n    var data =JSON.parse(responseBody);\n    vaVars.gptAnswers=data.choices[0].message.content;\n    //vaVars.gptAnswers=data;\n}\n\n",
+          "stepType": "ScriptAction",
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "d81928f81345454a87010c4b42a728a1": {
+          "name": "Whats your demand ?",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": ""
+                  },
+                  {
+                    "type": "datapill",
+                    "dataPill": {
+                      "value": "{{vaInputs.questions}}",
+                      "displayValue": "Input Variables➛Questions"
+                    },
+                    "children": [
+                      {
+                        "text": ""
+                      }
+                    ]
+                  },
+                  {
+                    "text": ""
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "skipReprompt": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "variableId": "c0845e446c1d4cb7b2e641b9346fd168",
+          "detailDescription": "",
+          "id": "d81928f81345454a87010c4b42a728a1",
+          "stepType": "ChoicePrompt",
+          "hasCardHeader": true,
+          "cardMetadata": {
+            "mode": "card",
+            "metadataScript": "",
+            "cardTemplate": "Small image with text",
+            "cardFields": {
+              "1cf75c317313101081e06502edf6a738_title": {
+                "value": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "text": "Auswahl 1 "
+                      }
+                    ]
+                  }
+                ],
+                "mode": "simple"
+              },
+              "1cf75c317313101081e06502edf6a738_description": {
+                "value": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "text": "Was ist die Frage"
+                      }
+                    ]
+                  }
+                ],
+                "mode": "simple"
+              },
+              "1cf75c317313101081e06502edf6a738_image": {
+                "value": "Virtual_Background_2_1731414388936.jpg",
+                "mode": "db_image"
+              }
+            },
+            "cardDefinition": {
+              "sys_id": "1cf75c317313101081e06502edf6a738",
+              "name": "Small image with text",
+              "sys_name": "Small image with text",
+              "thumbnail.name": "Small image with text.svg",
+              "fields": [
+                {
+                  "label": "Title",
+                  "position": "1",
+                  "mandatory": true,
+                  "name": "title",
+                  "id": "1cf75c317313101081e06502edf6a738_title"
+                },
+                {
+                  "label": "Description",
+                  "position": "2",
+                  "mandatory": false,
+                  "name": "description",
+                  "id": "1cf75c317313101081e06502edf6a738_description"
+                },
+                {
+                  "label": "Image URL link",
+                  "position": "3",
+                  "mandatory": true,
+                  "type": "image",
+                  "name": "image",
+                  "id": "1cf75c317313101081e06502edf6a738_image"
+                },
+                {
+                  "label": "Image alt text",
+                  "position": "4",
+                  "mandatory": false,
+                  "name": "imageAlt",
+                  "id": "1cf75c317313101081e06502edf6a738_imageAlt"
+                }
+              ],
+              "value": "Small image with text",
+              "hasTemplateError": false
+            }
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false
+        },
+        "730e765999f44ab4a029e7d9835fac13": {
+          "id": "730e765999f44ab4a029e7d9835fac13",
+          "stepType": "BooleanPrompt",
+          "name": "sure",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Are you sure"
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "skipReprompt": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "variableId": "6a2f0eef072e4f5ca252fd0ba08ff47f",
+          "detailDescription": ""
+        }
+      },
+      "edges": [
+        {
+          "id": "1331d7535b214aadbf78dc3eebb176fc",
+          "edgeType": "Edge",
+          "source": "730e765999f44ab4a029e7d9835fac13",
+          "target": "c76c33de61074ef4b37a7b2c71b627a5",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "057a2990276347b4b8ccf2e389fc9cac",
+          "edgeType": "Edge",
+          "source": "32c3bb37ccd647e1b0f29049622aff6b",
+          "target": "d81928f81345454a87010c4b42a728a1",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "42d04954f9aa48de8370a65677d091f9",
+          "edgeType": "Edge",
+          "source": "c76c33de61074ef4b37a7b2c71b627a5",
+          "target": "0fe080b54d82431f84cf44dff61760d0",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "92ff1f4ba8bb4c2da50234f092d69cda",
+          "edgeType": "Branch",
+          "source": "0fe080b54d82431f84cf44dff61760d0",
+          "target": "945fe2a83154443bb5b685bcd4aa9e0e",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.questions=Bye^NQvaInputs.questions=bye",
+            "mode": "query"
+          },
+          "label": "BYE"
+        },
+        {
+          "id": "5b6dcba755534d53812a91f8d0f46fcd",
+          "edgeType": "Branch",
+          "source": "0fe080b54d82431f84cf44dff61760d0",
+          "target": "46bc63c9c1644e09a2ad8c4c1c053408",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.questionsANYTHING",
+            "mode": "query"
+          },
+          "label": "Always"
+        },
+        {
+          "id": "aaf2d9eb9966434a84607496e7986ce9",
+          "edgeType": "Edge",
+          "source": "46bc63c9c1644e09a2ad8c4c1c053408",
+          "target": "d81928f81345454a87010c4b42a728a1",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "bcbabe7a10ca439d9d5aa94cdd12609c",
+          "edgeType": "Edge",
+          "source": "d81928f81345454a87010c4b42a728a1",
+          "target": "730e765999f44ab4a029e7d9835fac13",
+          "sourcePort": "",
+          "targetPort": ""
+        }
+      ]
+    }
+  },
+  "variables": {
+    "current-user": {
+      "category": "vaInputs",
+      "id": "current-user",
+      "label": "User",
+      "name": "user",
+      "table": "sys_user",
+      "varType": "reference"
+    },
+    "4c3484e5c04b4e00992a7020247d7e9f": {
+      "id": "4c3484e5c04b4e00992a7020247d7e9f",
+      "value": {
+        "mode": "simple",
+        "value": "..."
+      },
+      "name": "gptAnswers",
+      "label": "gptAnswers",
+      "varType": "script",
+      "category": "vaVars"
+    },
+    "e07cc117804d417398731039f7d8a979": {
+      "id": "e07cc117804d417398731039f7d8a979",
+      "name": "questions",
+      "label": "Questions",
+      "varType": "string",
+      "secure": false,
+      "category": "vaInputs",
+      "encryptionHashFunction": "SHA-256",
+      "encryptionSalt": {
+        "value": "MTczMTAxMDkwOTc0MSBWQSBEZXNpZ25lciBpcyBhd2Vzb21l",
+        "mode": "simple"
+      },
+      "nodeId": "c76c33de61074ef4b37a7b2c71b627a5",
+      "isHidden": false
+    },
+    "c0845e446c1d4cb7b2e641b9346fd168": {
+      "id": "c0845e446c1d4cb7b2e641b9346fd168",
+      "name": "whats_your_demand_",
+      "label": "Whats Your Demand ?",
+      "varType": "choice",
+      "choices": [
+        {
+          "label": "Frage stellen",
+          "value": "Frage stellen"
+        },
+        {
+          "label": "Nachricht senden",
+          "value": "Nachricht senden"
+        }
+      ],
+      "category": "vaInputs",
+      "nodeId": "d81928f81345454a87010c4b42a728a1",
+      "isHidden": false
+    },
+    "6a2f0eef072e4f5ca252fd0ba08ff47f": {
+      "id": "6a2f0eef072e4f5ca252fd0ba08ff47f",
+      "name": "sure",
+      "label": "Sure",
+      "varType": "boolean",
+      "secure": false,
+      "category": "vaInputs",
+      "nodeId": "730e765999f44ab4a029e7d9835fac13",
+      "isHidden": false
+    }
+  }
+}</graph>
+        <name>Chat Gpt Agent</name>
+        <sys_class_name>sys_cb_design_topic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-11-07 20:43:23</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>769f192c8331d610dbf15a96feaad3d1</sys_id>
+        <sys_mod_count>34</sys_mod_count>
+        <sys_name>FlowTopic</sys_name>
+        <sys_package display_value="AI App" source="x_244573_ai_app">92c8b38783211210dbf15a96feaad3a9</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI App">92c8b38783211210dbf15a96feaad3a9</sys_scope>
+        <sys_update_name>sys_cb_design_topic_769f192c8331d610dbf15a96feaad3d1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-11-12 12:40:06</sys_updated_on>
+        <type>FlowTopic</type>
+    </sys_cb_design_topic>
+</record_update>

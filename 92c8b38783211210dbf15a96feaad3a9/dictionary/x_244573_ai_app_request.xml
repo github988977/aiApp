@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" db_object_id="12c8b38783211210dbf15a96feaad3e5" extends="sn_creatorstudio_task" label="AI App Request" max_length="40" name="x_244573_ai_app_request" type="collection"/>
+</database>

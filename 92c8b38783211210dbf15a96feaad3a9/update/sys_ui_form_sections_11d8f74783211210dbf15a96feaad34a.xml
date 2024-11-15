@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_form_sections form_id="11d8f74783211210dbf15a96feaad34a" sys_domain="global" table="x_244573_ai_app_request" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2024-11-03 16:01:58</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>59d8778783211210dbf15a96feaad30b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_244573_ai_app_request" name="x_244573_ai_app_request" sys_domain="global" view="Default view">11d8f74783211210dbf15a96feaad34a</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="x_244573_ai_app_request" sys_domain="global" view="Default view">d5d8f74783211210dbf15a96feaad34d</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2024-11-03 16:01:58</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2024-11-03 16:01:58</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>15d8778783211210dbf15a96feaad310</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_244573_ai_app_request" name="x_244573_ai_app_request" sys_domain="global" view="Default view">11d8f74783211210dbf15a96feaad34a</sys_ui_form>
+            <sys_ui_section caption="Notes" display_value="Notes" name="x_244573_ai_app_request" sys_domain="global" view="Default view">91d8778783211210dbf15a96feaad30c</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2024-11-03 16:01:58</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_244573_ai_app_request</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2024-11-03 16:01:58</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>11d8f74783211210dbf15a96feaad34a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_244573_ai_app_request</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="AI App" source="x_244573_ai_app">92c8b38783211210dbf15a96feaad3a9</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="AI App">92c8b38783211210dbf15a96feaad3a9</sys_scope>
+            <sys_update_name>sys_ui_form_sections_11d8f74783211210dbf15a96feaad34a</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2024-11-03 16:01:58</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>
